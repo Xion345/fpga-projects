@@ -18,6 +18,7 @@ end vga_sync;
 architecture arch of vga_sync is
     constant CLOCK_DIVISOR: integer := 4;
     constant CLOCK_DIVISOR_WIDTH: integer := 2;
+    signal pixel_tick_internal: std_logic;
     -- Sync. counters
     signal vcount_reg, vcount_next: unsigned(9 downto 0);
     signal hcount_reg, hcount_next: unsigned(9 downto 0);
@@ -28,7 +29,7 @@ begin
     -- Generate Pixel Tick
     vga_clock: entity work.counter_mod_m
         generic map(N => CLOCK_DIVISOR_WIDTH, M => CLOCK_DIVISOR)
-        port map(clk => clk, reset => reset, max_tick => pixel_tick);
+        port map(clk => clk, reset => reset, max_tick => pixel_tick_internal);
 
     -- State registers
     process(clk, reset)
@@ -47,12 +48,12 @@ begin
     end process;
 
     -- Increment hcount/vcount
-    process(hcount_reg, vcount_reg, pixel_tick)
+    process(hcount_reg, vcount_reg, pixel_tick_internal)
 	 begin
         hcount_next <= hcount_reg;
         vcount_next <= vcount_reg;
 
-        if pixel_tick = '1' then
+        if pixel_tick_internal = '1' then
             if hcount_reg = 799 then
                 hcount_next <= (others => '0');
                 if vcount_reg = 524 then
@@ -73,6 +74,7 @@ begin
                   '0';
 
     -- Output
+    pixel_tick <= pixel_tick_internal;
     hsync <= hsync_reg;
     vsync <= vsync_reg;
     x <= std_logic_vector(hcount_reg);

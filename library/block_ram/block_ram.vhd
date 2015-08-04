@@ -42,7 +42,7 @@ begin
               data_out_a <= mem(conv_integer(addr_a));
          end if;
     end process;
-     
+
     -- Port B
     process(clk)
     begin

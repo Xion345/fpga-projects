@@ -40,7 +40,7 @@ architecture vga_tile_arch of vga_tiling_8x16 is
 begin
 
     -- Indexes memory block (16K x 8 bits)
-    index_mem: entity work.block_ram(Behavioral)
+    index_mem: entity work.block_ram
         generic map(DATA_WIDTH => 8, ADDR_WIDTH => 14)
         port map(
             clk => clk,
