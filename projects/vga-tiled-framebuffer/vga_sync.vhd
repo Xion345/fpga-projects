@@ -1,0 +1,1 @@
+../../library/vga/vga_sync.vhd

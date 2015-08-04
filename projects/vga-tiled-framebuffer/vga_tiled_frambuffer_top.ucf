@@ -1,0 +1,19 @@
+# Clock
+NET "clk" 		LOC = V10;
+NET "reset" 	LOC = C4;
+
+# UART
+NET "rx" 		LOC = N17 | IOSTANDARD = "LVCMOS33";
+NET "tx" 		LOC = N18 | IOSTANDARD = "LVCMOS33"; 
+
+# VGA
+NET "hsync"    LOC = N6;
+NET "vsync"    LOC = P7;
+NET "red[2]"   LOC = N7;
+NET "red[1]"   LOC = V7;
+NET "red[0]"   LOC = U7;
+NET "green[2]" LOC = V6;
+NET "green[1]" LOC = T6;
+NET "green[0]" LOC = P8;
+NET "blue[2]"  LOC = R7;
+NET "blue[1]"  LOC = T7;
