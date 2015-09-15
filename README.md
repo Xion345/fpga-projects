@@ -30,3 +30,7 @@ hsync/vsync signals are properly generated and if each component is properly wir
 UART on an external screen. The picture must be sliced into 8x16 pixels tiles
 before being sent (256 tiles at most). Includes python scripts to slice pictures
 into tiles and transfer them over UART from a computer (requires PIL and pyserial)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/Xion345/fpga-projects/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
